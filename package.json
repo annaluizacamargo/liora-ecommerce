@@ -6,20 +6,24 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "reinstall-deps": "rm -rf node_modules .next package-lock.json && npm install",
+    "clean-cache": "rm -rf .next/cache .next/server"
   },
   "dependencies": {
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "next": "15.1.4"
+    "next": "15.1.4",
+    "prettier": "3.4.2",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "styled-components": "6.1.14"
   },
   "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "eslint": "^9",
+    "@eslint/eslintrc": "3",
+    "@types/node": "20",
+    "@types/react": "19",
+    "@types/react-dom": "19",
+    "eslint": "9",
     "eslint-config-next": "15.1.4",
-    "@eslint/eslintrc": "^3"
+    "typescript": "5"
   }
 }
