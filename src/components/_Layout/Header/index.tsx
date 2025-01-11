@@ -4,6 +4,7 @@ import { slugify, stringToMd5 } from '@/lib/helpers/String.helper'
 import { navItems, userOptions } from './options'
 import Link from 'next/link'
 import * as S from './styles'
+import { useEffect, useState } from 'react'
 
 /**
  * LIORA E-COMMERCE HEADER
@@ -11,9 +12,17 @@ import * as S from './styles'
 export default function Header() {
   const logo = require('@assets/icons/liora-logo.svg')
   const searchIcon = require('@assets/icons/search-icon.svg')
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    window.addEventListener('scroll', () => {
+      setIsScrolled(window.scrollY > 0)
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
-    <S.HeaderContainer>
+    <S.HeaderContainer $isScrolled={isScrolled}>
       <S.HeaderWrapper>
         <S.HeaderLogoSection>
           <Link href="/">

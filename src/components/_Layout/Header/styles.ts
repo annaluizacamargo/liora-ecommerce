@@ -1,13 +1,15 @@
 import styled from 'styled-components'
 import Image from 'next/image'
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.div<{ $isScrolled: boolean }>`
   background-color: ${({ theme }) => theme.palette.background};
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
+  z-index: 999;
+  box-shadow: ${(props) => (props.$isScrolled ? '0 0.25rem 0.5rem rgba(0, 0, 0, 0.1)' : 'none')};
 `
 
 export const HeaderWrapper = styled.header`
@@ -18,7 +20,6 @@ export const HeaderWrapper = styled.header`
   margin: 0 auto;
   max-width: 100%;
   width: 90rem;
-  z-index: 999;
   padding: 1rem 3rem;
   gap: 0.5rem;
 
