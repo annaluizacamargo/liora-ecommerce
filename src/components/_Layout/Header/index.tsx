@@ -1,10 +1,11 @@
 'use client'
 
-import { slugify, stringToMd5 } from '@/lib/helpers/String.helper'
-import { navItems, userOptions } from './options'
+import { stringToMd5 } from '@/lib/helpers/String.helper'
+import { userOptions } from './options'
+import { useEffect, useState } from 'react'
+import Navbar from './NavBar'
 import Link from 'next/link'
 import * as S from './styles'
-import { useEffect, useState } from 'react'
 
 /**
  * LIORA E-COMMERCE HEADER
@@ -47,24 +48,7 @@ export default function Header() {
           <S.DivisorLine />
         </S.Divisor>
 
-        <S.NavbarWrapper>
-          <S.ListItems>
-            <S.UlItems>
-              {navItems?.map((item, index) => {
-                const link = index === 0 ? '/' : `/${slugify(item)}`
-                const isActive = window && window.location.pathname === link
-
-                return (
-                  <S.LiItems key={stringToMd5(`${item}-${index}`)}>
-                    <Link href={link}>
-                      <S.NavItem className={isActive ? 'active' : ''}>{item}</S.NavItem>
-                    </Link>
-                  </S.LiItems>
-                )
-              })}
-            </S.UlItems>
-          </S.ListItems>
-        </S.NavbarWrapper>
+        <Navbar />
       </S.HeaderWrapper>
     </S.HeaderContainer>
   )
