@@ -17,6 +17,7 @@ export const ImageWrapper = styled.div`
   img {
     object-fit: cover;
     width: 100%;
+    height: 100%;
     border-radius: 0.25rem;
     transition: transform 0.3s;
 
@@ -36,6 +37,21 @@ export const ImageWrapper = styled.div`
   .discount-badge {
     z-index: 2;
   }
+
+  ${({ theme }) =>
+    theme.breakpoints.fullHd(`
+      height: 24rem;
+  `)}
+
+  ${({ theme }) =>
+    theme.breakpoints.tablet(`
+      height: 18rem;
+  `)}
+
+  ${({ theme }) =>
+    theme.breakpoints.mobile(`
+      height: 14rem;
+  `)}
 `
 
 export const DiscountBadge = styled.div`
