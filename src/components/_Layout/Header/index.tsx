@@ -1,19 +1,16 @@
 'use client'
 
 import { slugify, stringToMd5 } from '@/lib/helpers/String.helper'
+import { navItems, userOptions } from './options'
 import Link from 'next/link'
 import * as S from './styles'
-import { navItems, userOptions } from './options'
+
 /**
  * LIORA E-COMMERCE HEADER
  */
 export default function Header() {
   const logo = require('@assets/icons/liora-logo.svg')
   const searchIcon = require('@assets/icons/search-icon.svg')
-
-  if (typeof window === 'undefined') {
-    return null
-  }
 
   return (
     <S.HeaderContainer>
@@ -46,7 +43,7 @@ export default function Header() {
             <S.UlItems>
               {navItems?.map((item, index) => {
                 const link = index === 0 ? '/' : `/${slugify(item)}`
-                const isActive = link === window.location.pathname
+                const isActive = window && window.location.pathname === link
 
                 return (
                   <S.LiItems key={stringToMd5(`${item}-${index}`)}>
