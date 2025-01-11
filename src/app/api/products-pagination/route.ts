@@ -1,3 +1,5 @@
+import { IProduct } from '@/app/types'
+import { slugify } from '@/lib/helpers/String.helper'
 import { NextRequest, NextResponse } from 'next/server'
 
 /**
@@ -7,7 +9,7 @@ import { NextRequest, NextResponse } from 'next/server'
  */
 export async function POST(request: NextRequest) {
   try {
-    const { limit, page } = await request.json()
+    const { limit, page, category } = await request.json()
 
     if (!limit || !page || limit <= 0 || page <= 0) {
       return NextResponse.json({ error: 'Invalid limit or page parameters' }, { status: 400 })
@@ -20,7 +22,12 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to fetch data from the API' }, { status: response.status })
     }
 
-    const data = await response.json()
+    let data = await response.json()
+
+    if (category && category !== 'nossos-produtos') {
+      const filteredData = data.filter((product: IProduct) => slugify(product?.category) === slugify(category))
+      data = filteredData
+    }
 
     // MANUAL PAGINATION LOGIC
     const totalItems = data.length

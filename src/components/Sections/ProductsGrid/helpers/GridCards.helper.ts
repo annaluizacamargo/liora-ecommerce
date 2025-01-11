@@ -28,7 +28,11 @@ const MOBILE_CARD = {
  * @param setProductsPage
  * @returns
  */
-export const handleResize = (setLimitOfProducts: (value: number) => void, setProductsPage: (value: number) => void) => {
+export const handleResize = (
+  setLimitOfProducts: (value: number) => void,
+  setProductsPage: (value: number) => void,
+  needDuplicate = true
+) => {
   const windowWidth = window.innerWidth
 
   const typeOfCard =
@@ -36,7 +40,8 @@ export const handleResize = (setLimitOfProducts: (value: number) => void, setPro
 
   const { cardWidth, paddingWrapper, paddingCard } = typeOfCard
 
-  const newLimitOfProducts = Math.floor((windowWidth - paddingWrapper) / (cardWidth + paddingCard)) * 2
+  const newLimitOfProducts =
+    Math.floor((windowWidth - paddingWrapper) / (cardWidth + paddingCard)) * (needDuplicate ? 2 : 1)
   setLimitOfProducts(newLimitOfProducts)
   setProductsPage(1)
 }

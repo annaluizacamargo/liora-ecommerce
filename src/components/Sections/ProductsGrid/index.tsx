@@ -11,9 +11,11 @@ import * as S from './styles'
 
 /**
  * PRODUCTS GRID
+ * @param title
+ * @param category
  * @returns
  */
-export default function ProductsGrid() {
+export default function ProductsGrid({ title, category }: Readonly<{ title: string; category: string }>) {
   const [productsPage, setProductsPage] = useState(1)
   const [limitOfProducts, setLimitOfProducts] = useState(6)
   const [productsData, setProductsData] = useState<IProduct[]>([])
@@ -25,7 +27,7 @@ export default function ProductsGrid() {
    */
   const fetchProductsData = async (limit: number, page: number) => {
     try {
-      const response = await network.post('/api/products-pagination', { limit, page })
+      const response = await network.post('/api/products-pagination', { limit, page, category })
       const productsData = response?.data ?? []
       setIsEndOfProducts(response?.finished)
 
@@ -51,11 +53,11 @@ export default function ProductsGrid() {
   // UseEffect: Fetch products data based on the limit and page
   useEffect(() => {
     fetchProductsData(limitOfProducts, productsPage)
-  }, [limitOfProducts, productsPage])
+  }, [limitOfProducts, productsPage, category])
 
   return (
     <S.ProductsContainer>
-      <h3>Confira nossas novidades!</h3>
+      <h3>{title}</h3>
 
       <ul>
         {productsData &&
