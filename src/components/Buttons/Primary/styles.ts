@@ -23,4 +23,10 @@ export const PrimaryButtonStyle = styled.button`
     width: 1.25rem;
     height: 1.25rem;
   }
+
+  ${({ theme }) =>
+    theme.breakpoints.mobile(`
+      padding: 0.5rem 1rem;
+      width: 100%;
+  `)}
 `

@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 import { stringToMd5 } from '@/lib/helpers/String.helper'
 import { IProduct } from '@/app/types'
 import { handleResize } from './helpers/GridCards.helper'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import HomeProductCard from '@/components/Cards/HomeProductCard'
+import PrimaryButton from '@/components/Buttons/Primary'
 import * as network from '@/services/Network/NextNetwork.service'
 import * as S from './styles'
 
@@ -73,14 +73,15 @@ export default function ProductsGrid() {
 
       {productsData?.length > 0 && !isEndOfProducts && (
         <S.ButtonWrapper>
-          <button
+          <PrimaryButton
+            isLoading={isLoading}
             onClick={() => {
               setIsLoading(true)
               setProductsPage((prev) => prev + 1)
             }}
           >
-            {isLoading ? <FontAwesomeIcon icon="circle-notch" spin={true} /> : 'Ver mais produtos'}
-          </button>
+            Ver mais produtos
+          </PrimaryButton>
         </S.ButtonWrapper>
       )}
     </S.ProductsContainer>
