@@ -1,4 +1,4 @@
-import { IFavoriteContext, IFavoriteProvider } from '@/providers/Favorites/types'
+import { IFavoriteContext, IFavoriteProvider } from '@providers/Favorites/types'
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
 import { IProduct } from '@/app/types'
 
