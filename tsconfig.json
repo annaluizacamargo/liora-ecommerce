@@ -1,14 +1,19 @@
 {
   "compilerOptions": {
-    "target": "ES2017",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "target": "es6",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
+    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
@@ -27,6 +32,19 @@
       "@providers/*": ["./src/providers/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    ".next/types/**/*.ts",
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "src/styles/Global.styles.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "src/test",
+    "**/*.spec.tsx",
+    "**/*.test.tsx",
+    "**/*.spec.ts",
+    "**/*.test.ts"
+  ]
 }
