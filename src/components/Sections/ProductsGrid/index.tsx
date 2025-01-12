@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react'
 import { stringToMd5 } from '@/lib/helpers/String.helper'
-import { IProduct } from '@/app/types'
+import { IProduct } from '@/components/Cards/HomeProductCard/types'
 import { handleResize } from './helpers/GridCards.helper'
 import HomeProductCard from '@/components/Cards/HomeProductCard'
 import PrimaryButton from '@/components/Buttons/Primary'

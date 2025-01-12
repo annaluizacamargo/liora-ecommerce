@@ -1,5 +1,5 @@
 import { Dispatch, ReactNode, SetStateAction } from 'react'
-import { IProduct } from '@/app/types'
+import { IProduct } from '@/components/Cards/HomeProductCard/types'
 
 export interface IFavoriteProvider {
   children: ReactNode

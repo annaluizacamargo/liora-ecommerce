@@ -1,6 +1,6 @@
 'use client'
 
-import { IProduct } from '@/app/types'
+import { IProduct } from '@/components/Cards/HomeProductCard/types'
 import FavoriteButton from '@/components/Buttons/FavoriteButton'
 import Link from 'next/link'
 import Image from 'next/image'

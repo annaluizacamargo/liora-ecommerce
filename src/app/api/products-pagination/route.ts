@@ -1,4 +1,4 @@
-import { IProduct } from '@/app/types'
+import { IProduct } from '@/components/Cards/HomeProductCard/types'
 import { slugify } from '@/lib/helpers/String.helper'
 import { NextRequest, NextResponse } from 'next/server'
 

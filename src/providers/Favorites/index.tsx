@@ -1,6 +1,6 @@
 import { IFavoriteContext, IFavoriteProvider } from '@providers/Favorites/types'
 import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react'
-import { IProduct } from '@/app/types'
+import { IProduct } from '@/components/Cards/HomeProductCard/types'
 
 const Index = createContext<IFavoriteContext>({
   fetchFavoritesList: () => new Promise(() => {}),

@@ -52,7 +52,7 @@ const theme: DefaultTheme = {
     primary: {
       lighter: '#E6E6E6',
     //   light: '#565656',
-    //   default: '#3F3F3F',
+      default: '#A88179',
     //   dark: '#191919',
     //   darker: '#232323',
     },
