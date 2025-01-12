@@ -1,6 +1,7 @@
 'use client'
 
 import { IProduct } from '@/components/Cards/HomeProductCard/types'
+import { slugify } from '@/lib/helpers/String.helper'
 import FavoriteButton from '@/components/Buttons/FavoriteButton'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -13,13 +14,14 @@ import * as S from './styles'
  */
 export default function HomeProductCard({ product }: Readonly<{ product: IProduct }>) {
   const { id, name, description, price, image, promotional_price, discount_percentage } = product
+  const productLink = `/produto/${id}-${slugify(name)}`
 
   return (
     <S.CardWrapper>
       <S.ImageWrapper>
         <FavoriteButton productInfo={product} />
 
-        <Link href={`/product/${id}`}>
+        <Link href={productLink}>
           {discount_percentage && (
             <S.DiscountBadge className="discount-badge">
               <span>{discount_percentage}% OFF</span>
@@ -29,7 +31,7 @@ export default function HomeProductCard({ product }: Readonly<{ product: IProduc
         </Link>
       </S.ImageWrapper>
 
-      <Link href={`/product/${id}`}>
+      <Link href={productLink}>
         <S.ProductTitle>{name}</S.ProductTitle>
 
         <S.Description>

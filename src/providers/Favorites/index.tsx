@@ -16,35 +16,39 @@ export function FavoriteListProvider({ children }: Readonly<IFavoriteProvider>) 
 
   /**
    * FETCH MY LIST
-   * @param type
    */
   const fetchFavoritesList = useCallback(() => {
-    setIsLoading(true)
     const favorites = localStorage.getItem('favorites')
     const favoritesList = favorites ? JSON.parse(favorites) : []
     setFavoritesList(favoritesList)
-    setIsLoading(false)
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setIsLoading(false) // Marca como carregado quando a lista é recuperada
   }, [])
 
   const handleFavorite = (item: IProduct) => {
-    setIsLoading(true)
+    setIsLoading(true) // Marca como carregando quando o favorito é adicionado ou removido
     let newList: IProduct[]
 
     const favorites = localStorage.getItem('favorites')
     const favoritesList: IProduct[] = favorites ? JSON.parse(favorites) : []
 
-    if (!favoritesList?.some((favorite) => favorite.id === item.id)) {
+    if (!favoritesList.some((favorite) => favorite.id === item.id)) {
       newList = [...favoritesList, { ...item }]
       localStorage.setItem('favorites', JSON.stringify(newList))
     } else {
-      newList = favoritesList?.filter((favorite) => favorite.id !== item.id) ?? []
+      newList = favoritesList.filter((favorite) => favorite.id !== item.id)
       localStorage.setItem('favorites', JSON.stringify(newList))
     }
 
     setFavoritesList(newList)
-    setIsLoading(false)
+    setIsLoading(false) // Marca como não carregando quando a operação é concluída
   }
+
+  // Carregar lista de favoritos na primeira renderização
+  useEffect(() => {
+    if (window) {
+      fetchFavoritesList()
+    }
+  }, [fetchFavoritesList])
 
   const values = useMemo(
     () => ({
@@ -56,16 +60,6 @@ export function FavoriteListProvider({ children }: Readonly<IFavoriteProvider>) 
     }),
     [fetchFavoritesList, favoritesList, setFavoritesList, handleFavorite, isLoading]
   )
-
-  /**
-   * FETCH MY LISTS ON FIRST RENDER
-   */
-  useEffect(() => {
-    if (window) {
-      fetchFavoritesList()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   return <Index.Provider value={values}>{children}</Index.Provider>
 }
