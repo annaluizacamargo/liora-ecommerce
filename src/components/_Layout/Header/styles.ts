@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Image from 'next/image'
 
-export const HeaderContainer = styled.div<{ $isScrolled: boolean }>`
+export const HeaderContainer = styled.div<{ $isScrolled: boolean; children?: React.ReactNode }>`
   background-color: ${({ theme }) => theme.palette.background};
   position: fixed;
   top: 0;
@@ -12,7 +12,7 @@ export const HeaderContainer = styled.div<{ $isScrolled: boolean }>`
   box-shadow: ${(props) => (props.$isScrolled ? '0 0.25rem 0.5rem rgba(0, 0, 0, 0.1)' : 'none')};
 `
 
-export const HeaderWrapper = styled.header`
+export const HeaderWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,11 +22,6 @@ export const HeaderWrapper = styled.header`
   width: 90rem;
   padding: 1rem 3rem;
   gap: 0.5rem;
-
-  /* ${({ theme }) =>
-    theme.breakpoints.mobile(`
-      padding: 1rem 0;
-  `)} */
 `
 
 export const HeaderLogoSection = styled.div`
@@ -59,7 +54,12 @@ export const SearchIcon = styled(Image)`
   cursor: pointer;
 `
 
-export const SearchBar = styled.input`
+interface SearchBarProps {
+  type: string
+  placeholder: string
+}
+
+export const SearchBar = styled.input<SearchBarProps>`
   width: 100%;
   font-size: ${({ theme }) => theme.fontSizes.sm};
   font-weight: ${({ theme }) => theme.fontWeights.regular};
@@ -95,60 +95,4 @@ export const DivisorLine = styled.hr`
   width: 100%;
   border: 0.1rem solid ${({ theme }) => theme.palette.primary};
   opacity: 0.3;
-`
-
-export const NavbarWrapper = styled.nav`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-`
-
-export const ListItems = styled.ul`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-`
-
-export const UlItems = styled.ul`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-`
-
-export const LiItems = styled.li`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-
-  a {
-    text-decoration: none;
-  }
-`
-
-export const NavItem = styled.span`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  padding: 0.5rem 1rem;
-  color: ${({ theme }) => theme.palette.neutral.light};
-  font-weight: ${({ theme }) => theme.fontWeights.regular};
-  text-decoration: none;
-  font-weight: 500;
-  cursor: pointer;
-  transition: 0.3s;
-
-  &:hover {
-    color: ${({ theme }) => theme.palette.neutral.dark};
-    font-weight: ${({ theme }) => theme.fontWeights.semiBold};
-  }
-
-  &.active {
-    color: ${({ theme }) => theme.palette.neutral.dark};
-    font-weight: ${({ theme }) => theme.fontWeights.bold};
-  }
 `

@@ -1,8 +1,8 @@
+import { GlobalStyle } from '@/styles/Global.styles'
 import type { Metadata } from 'next'
 import { Montserrat, Smooch_Sans } from 'next/font/google'
-import { GlobalStyle } from '@/styles/Global.styles'
-import Header from '@/components/_Layout/Header'
 import CustomProvider from '@/theme'
+import Header from '@/components/_Layout/Header'
 
 const montserrat = Montserrat({
   variable: '--font-montserrat',
@@ -19,12 +19,7 @@ export const metadata: Metadata = {
   description: 'O melhor e-commerce de moda do Brasil',
 }
 
-/**
- * ROOT LAYOUT
- * @param children
- * @returns
- */
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode

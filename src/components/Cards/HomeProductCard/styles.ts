@@ -39,11 +39,6 @@ export const ImageWrapper = styled.div`
   }
 
   ${({ theme }) =>
-    theme.breakpoints.fullHd(`
-      height: 24rem;
-  `)}
-
-  ${({ theme }) =>
     theme.breakpoints.tablet(`
       height: 18rem;
   `)}
@@ -54,7 +49,7 @@ export const ImageWrapper = styled.div`
   `)}
 `
 
-export const DiscountBadge = styled.div`
+export const DiscountBadge = styled.div<{ className?: string, children?: React.ReactNode }>`
   position: absolute;
   top: 0.5rem;
   left: 0.5rem;

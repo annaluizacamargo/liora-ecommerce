@@ -30,4 +30,4 @@ export const FavoriteButtonWrapper = styled.button`
       transform: scale(1.1);
     }
   }
-`
+` as any

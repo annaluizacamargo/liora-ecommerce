@@ -1,8 +1,6 @@
 'use client'
 
 import { slugify } from '@/lib/helpers/String.helper'
-import { usePathname } from 'next/navigation'
-import { navItems } from '../options'
 import Link from 'next/link'
 import * as S from './styles'
 
@@ -11,32 +9,28 @@ import * as S from './styles'
  * @returns
  */
 export default function Navbar() {
-  const url = usePathname() || ''
-  const activeSection = url ? `/${url.split('/')[1]}` : 'home'
-
-  // TODO: Fix the window object issue
-  if (window === undefined) {
-    return <></>
-  }
+  /**
+   * Navigation items for the header [the bottom part]
+   */
+  const navItems = ['Novidades', 'Todos os Produtos', 'Feminino', 'Masculino', 'Calçados']
 
   return (
     <S.NavbarWrapper>
-      <S.ListItems>
-        <S.UlItems>
-          {navItems?.map((item, index) => {
-            const link = index === 0 ? '/' : `/${slugify(item)}`
-            const isActive = activeSection === link
+      <S.UlItems>
+        {navItems?.map((item) => {
+          // TODO: Implement activeSection
+          // const link = index === 0 ? '/' : `/${slugify(item)}`
+          // const isActive = activeSection === link
 
-            return (
-              <S.LiItems key={`${item}-${index}`}>
-                <Link href={link}>
-                  <S.NavItem className={isActive ? 'active' : ''}>{item}</S.NavItem>
-                </Link>
-              </S.LiItems>
-            )
-          })}
-        </S.UlItems>
-      </S.ListItems>
+          return (
+            <S.LiItems key={slugify(item)}>
+              <Link href="/">
+                <S.NavItem>{item}</S.NavItem>
+              </Link>
+            </S.LiItems>
+          )
+        })}
+      </S.UlItems>
     </S.NavbarWrapper>
   )
 }

@@ -7,13 +7,6 @@ export const NavbarWrapper = styled.nav`
   width: 100%;
 `
 
-export const ListItems = styled.ul`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-`
-
 export const UlItems = styled.ul`
   display: flex;
   justify-content: center;
@@ -21,7 +14,7 @@ export const UlItems = styled.ul`
   width: 100%;
 `
 
-export const LiItems = styled.li`
+export const LiItems = styled.li<{ children?: React.ReactNode }>`
   display: flex;
   justify-content: center;
   align-items: center;

@@ -23,7 +23,7 @@ export default function FavoriteButton({ productInfo }: Readonly<IFavoriteButton
   const [isLoading, setIsLoading] = useState(false)
   const isFavorite = favoritesList.some((item: IProduct) => item?.id == productInfo?.id)
 
-  const handleClick = async () => {
+  const handleClick = () => {
     setIsLoading(true)
     handleFavorite(productInfo)
     setIsLoading(false)
