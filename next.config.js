@@ -7,7 +7,9 @@ const nextConfig = {
   },
   reactStrictMode: false,
   output: 'standalone',
-  generateBuildId: () => nextBuildId({ dir: __dirname }),
+  generateBuildId: async () => {
+    return 'next-build-' + Date.now()
+  },
 }
 
 module.exports = nextConfig
